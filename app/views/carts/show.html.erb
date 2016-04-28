@@ -9,6 +9,8 @@
 <% end %>
 
 <p>Order total: <strong><%= number_to_currency((@cart.total.to_f/100)) %></strong> </p>
-<% if @cart.status != "submitted" %>
+<% if current_user.current_cart %>
   <%= button_to 'Checkout', checkout_path(@cart.id) %>
+  <% else %>
+  <%= button_to 'Start another shopping session', store_path, method: :get %>
 <% end %>
