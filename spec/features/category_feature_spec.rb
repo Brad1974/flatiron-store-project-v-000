@@ -27,14 +27,14 @@ describe 'Feature Test: Category', :type => :feature do
 
     context "logged in" do
       before(:each) do
-        @user = User.first
+        @user = User.create(email: "danielbrad@gmail.com", password: "password")
         login_as(@user, scope: :user)
       end
 
       it 'does display "Add To Cart" button' do
-        visit category_path(@category)
-        expect(page).to have_selector("input[type=submit][value='Add to Cart']")
-      end
-    end
-  end
-end
+         visit category_path(@category)
+         expect(page).to have_selector("input[type=submit][value='Add to Cart']")
+       end
+     end
+   end
+ end
